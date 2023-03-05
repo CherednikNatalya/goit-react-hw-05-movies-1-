@@ -9,7 +9,7 @@ import { Container, Header,  Link } from "../SharedLayout/SharedLayout.styled";
         
         <nav>
           <Link to="" end> Home</Link>
-          <Link to="about">About</Link>
+          <Link to="movies">Movies</Link>
         
         </nav>
       </Header>

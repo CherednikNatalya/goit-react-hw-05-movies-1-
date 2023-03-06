@@ -2,7 +2,7 @@ const STATUS = {
     idle: 'idle',
     pending: 'pending',
     success: 'success',
-    rejected: 'rejected',
+    error: 'error',
   };
 
   export default STATUS

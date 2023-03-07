@@ -1,7 +1,7 @@
 import {fetchTrendingMovies} from '../../services/API'
 import STATUS from '../../services/status'
 import {Title} from '../Home/Home.styled'
-import {Loader} from '../../components/Loader/Loader'
+import Loader from '../../components/Loader/Loader'
 import TrendingList  from '../../components/TrendingList/TrendingList'
 import { useState, useEffect } from 'react'
 

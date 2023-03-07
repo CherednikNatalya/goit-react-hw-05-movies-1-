@@ -3,14 +3,12 @@ import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import SharedLayout from './SharedLayout/SharedLayout'
 import Movies from '../pages/Movies/Movies'
 import Home from '../pages/Home/Home'
-import Cast from '../components/Cast/Cast'
+import Cast from '../pages/MovieDetails/Cast/Cast'
 import MovieDetails from '../pages/MovieDetails/MovieDetails'
-import Reviews from '../components/Reviews/Reviews'
+import Reviews from '../pages/MovieDetails/Reviews/Reviews'
 
 
 const App = () => {
-
-
 
   return (
 

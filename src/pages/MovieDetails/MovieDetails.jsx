@@ -66,10 +66,7 @@ const MovieDetails =() => {
          
        </ul>
        <Outlet />
-       </>)}
-        
-       
-
+       </>)}     
         </Section>
     )
 }

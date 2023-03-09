@@ -17,15 +17,20 @@ const MovieDetails =() => {
         const getMovie = async query => {
             setStatus(STATUS.pending)
             try {
-               const data =await fetchMovieDetailsById(query)
+               const data =await fetchMovieDetailsById(movieId)
                onResolve(data) 
+            
             } catch (error) {
                
                 setStatus(STATUS.error); 
             }
         }
+        
         getMovie()
+        
     }, [movieId])
+
+
     
     const onResolve = data => {
         const dataMovie = {

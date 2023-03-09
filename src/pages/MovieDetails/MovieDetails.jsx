@@ -4,13 +4,14 @@ import {fetchMovieDetailsById} from '../../services/API'
 import Section from '../../components/Section/Section'
 import Loader from '../../components/Loader/Loader'
 import MovieCart from '../../components/MovieCart/MovieCart'
-import { useParams,  NavLink,Outlet } from 'react-router-dom'
+import Button from '../../components/Button/Button'
+import { useParams,  NavLink,Outlet, useNavigate } from 'react-router-dom'
 
 const MovieDetails =() => {
     const [movies, setMovies] = useState([])
     const [status, setStatus] = useState(STATUS.idle);
     const {movieId} =useParams()
-    
+    const navigate =useNavigate()
 
     useEffect (()=>{
         const getMovies = async query => {
@@ -19,7 +20,7 @@ const MovieDetails =() => {
                const data =await fetchMovieDetailsById(query)
                onResolve(data) 
             } catch (error) {
-                console.log(error);
+               
                 setStatus(STATUS.error); 
             }
         }
@@ -38,22 +39,31 @@ const MovieDetails =() => {
         setMovies(dataMovie);
         setStatus(STATUS.success);
     }
-    
+
+    const onClick = () =>{
+        navigate('/')
+    }
+    // onClick={() => navigate(location?.state?.from)}
     return(
         <Section>
         {status === STATUS.pending && <Loader />}
-        {status === STATUS.success && <MovieCart movies={movies}/>}
+        {status === STATUS.success && 
+        (<>
+        <Button onClick={onClick}/>
+        <MovieCart movies={movies}/>
+         <ul>
+         <li>
+           <NavLink to="cast">Cast</NavLink>
+         </li>
+         <li>
+           <NavLink to="reviews">Reviews</NavLink>
+         </li>
+         
+       </ul>
+       <Outlet />
+       </>)}
         
-        <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-        
-      </ul>
-      <Outlet />
+       
 
         </Section>
     )

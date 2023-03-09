@@ -1,5 +1,7 @@
 const MovieCart =({movies}) =>{
-    // return()
+    return(
+        <div>rtjsrt</div>
+    )
 }
 
 export default MovieCart

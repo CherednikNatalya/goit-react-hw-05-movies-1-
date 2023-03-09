@@ -28,7 +28,7 @@ export default TrendingList
 TrendingList.propTypes = {
     movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         titleL: PropTypes.string.isRequired,
       })
     ),

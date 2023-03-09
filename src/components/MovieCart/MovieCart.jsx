@@ -1,6 +1,6 @@
-const MovieCart =({movies}) =>{
+const MovieCart =({ img, title,releaseDate, overview, genres, voteAverage}) =>{
     return(
-        <div>rtjsrt</div>
+       <img src={`https://image.tmdb.org/t/p/w500`+ {img}} alt="" />
     )
 }
 

@@ -8,13 +8,13 @@ import Button from '../../components/Button/Button'
 import { useParams,  NavLink,Outlet, useNavigate } from 'react-router-dom'
 
 const MovieDetails =() => {
-    const [movies, setMovies] = useState([])
+    const [movie, setMovie] = useState([])
     const [status, setStatus] = useState(STATUS.idle);
     const {movieId} =useParams()
     const navigate =useNavigate()
 
     useEffect (()=>{
-        const getMovies = async query => {
+        const getMovie = async query => {
             setStatus(STATUS.pending)
             try {
                const data =await fetchMovieDetailsById(query)
@@ -24,7 +24,7 @@ const MovieDetails =() => {
                 setStatus(STATUS.error); 
             }
         }
-        getMovies()
+        getMovie()
     }, [movieId])
     
     const onResolve = data => {
@@ -36,7 +36,7 @@ const MovieDetails =() => {
             genres: data.genres.map(item => item.name + ', ').join(' ').slice(0, -2),
             voteAverage: (data.vote_average * 10).toFixed(0),
         };
-        setMovies(dataMovie);
+        setMovie(dataMovie);
         setStatus(STATUS.success);
     }
 
@@ -50,7 +50,7 @@ const MovieDetails =() => {
         {status === STATUS.success && 
         (<>
         <Button onClick={onClick}/>
-        <MovieCart movies={movies}/>
+        <MovieCart movie={movie}/>
          <ul>
          <li>
            <NavLink to="cast">Cast</NavLink>

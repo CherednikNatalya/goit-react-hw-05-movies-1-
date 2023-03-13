@@ -52,6 +52,7 @@ const MovieDetails =() => {
         </Link>
      
         <MovieCart movie={movie}/>
+        
          <ul>
          <li>
            <NavLink to="cast" state={{ from: location.state?.from }}>Cast</NavLink>

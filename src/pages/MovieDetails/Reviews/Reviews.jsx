@@ -18,7 +18,7 @@ const Reviews =()=>{
         const getMovies = async query => {
             setStatus(STATUS.pending)
             try {
-               const data =await fetchReviewsById(movieId)
+               const data =await fetchReviewsById(query)
                onResolve(data) 
             } catch (error) {
                 console.log(error);
@@ -29,17 +29,15 @@ const Reviews =()=>{
     }, [movieId])
     
     const onResolve = data => {
-        const movie = data.map(({ id, author, content}) => ({
+        const dataReviews = data.map(({ id, author, content}) => ({
             id, 
             author, 
             content
         }));
-        setMovies(movie);
+        setMovies(dataReviews);
         setStatus(STATUS.success);
     }
-
-
-
+    
     return (
 <>
         {status === STATUS.pending && <Loader />}

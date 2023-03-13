@@ -1,14 +1,14 @@
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import {lazy, Suspense} from 'react'
 import SharedLayout from './SharedLayout/SharedLayout'
-// import Movies from '../pages/Movies/Movies'
-// import Home from '../pages/Home/Home'
-import Cast from '../pages/MovieDetails/Cast/Cast'
-import MovieDetails from '../pages/MovieDetails/MovieDetails'
-import Reviews from '../pages/MovieDetails/Reviews/Reviews'
 import Loader from '../components/Loader/Loader'
+
 const Home =lazy(()=> import ('../pages/Home/Home'))
 const Movies =lazy(()=> import ('../pages/Movies/Movies'))
+const MovieDetails =lazy(()=> import ('../pages/MovieDetails/MovieDetails'))
+const Cast =lazy(()=> import ('../pages/MovieDetails/Cast/Cast'))
+const Reviews =lazy(()=> import ('../pages/MovieDetails/Reviews/Reviews'))
+
 
 const App = () => {
 

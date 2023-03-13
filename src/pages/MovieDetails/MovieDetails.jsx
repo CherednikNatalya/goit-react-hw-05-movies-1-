@@ -4,6 +4,7 @@ import {fetchMovieDetailsById} from '../../services/API'
 import Section from '../../components/Section/Section'
 import Loader from '../../components/Loader/Loader'
 import MovieCart from '../../components/MovieCart/MovieCart'
+
 import { useParams,  NavLink,Outlet,  Link, useLocation  } from 'react-router-dom'
 
 const MovieDetails =() => {

@@ -3,17 +3,20 @@ import Searchbar from '../../components/Searchbar/Searchbar'
 import TrendingList from '../../components/TrendingList/TrendingList'
 import {fetchSearchMovies} from '../../services/API'
 import STATUS from '../../services/status'
-import { useState, } from "react";
+import { useState } from "react";
+import { useLocation } from 'react-router-dom';
 
 const Movies = () => {
-    
+  const location = useLocation();
+  console.log(location);
     const [status, setStatus] =useState(STATUS.idle)
     
     const [movies, setMovies] = useState([]);
     
  
     const onSubmit = async e => {
-      return await fetchSearchMovies(e).then(res => setMovies(res.results));
+      return await fetchSearchMovies(e)
+      .then(res => setMovies(res.results));
     };
 
 

@@ -1,17 +1,17 @@
 import STATUS from '../../services/status'
-import { useState, useEffect, } from 'react'
+import { useState, useEffect, Suspense} from 'react'
 import {fetchMovieDetailsById} from '../../services/API'
 import Section from '../../components/Section/Section'
 import Loader from '../../components/Loader/Loader'
 import MovieCart from '../../components/MovieCart/MovieCart'
-import Button from '../../components/Button/Button'
-import { useParams,  NavLink,Outlet, useNavigate } from 'react-router-dom'
+import { useParams,  NavLink,Outlet,  Link, useLocation  } from 'react-router-dom'
 
 const MovieDetails =() => {
     const [movie, setMovie] = useState([])
     const [status, setStatus] = useState(STATUS.idle);
     const {movieId} =useParams()
-    const navigate =useNavigate()
+   
+    const location = useLocation()
 
     useEffect (()=>{
         const getMovie = async query => {
@@ -19,15 +19,11 @@ const MovieDetails =() => {
             try {
                const data =await fetchMovieDetailsById(movieId)
                onResolve(data) 
-            
             } catch (error) {
-               
-                setStatus(STATUS.error); 
-            }
+               setStatus(STATUS.error); 
+            } 
         }
-        
-        getMovie()
-        
+        getMovie()    
     }, [movieId])
 
 
@@ -45,26 +41,31 @@ const MovieDetails =() => {
         setStatus(STATUS.success);
     }
 
-    const onClick = () =>{
-        navigate('/')
-    }
-    // onClick={() => navigate(location?.state?.from)}
+    
     return(
         <Section>
         {status === STATUS.pending && <Loader />}
         {status === STATUS.success && 
         (<>
-        <Button onClick={onClick}/>
+        <Link to={location.state?.from ?? '/'} className="mb-4">
+          Go Back
+        </Link>
+     
         <MovieCart movie={movie}/>
          <ul>
          <li>
-           <NavLink to="cast">Cast</NavLink>
+           <NavLink to="cast" state={{ from: location.state?.from }}>Cast</NavLink>
          </li>
          <li>
-           <NavLink to="reviews">Reviews</NavLink>
+           <NavLink to="reviews" state={{ from: location.state?.from }}>Reviews</NavLink>
          </li>
          
        </ul>
+       <Suspense fallback={<Loader/>}>
+        <Outlet />
+      </Suspense>
+
+
        <Outlet />
        </>)}     
         </Section>

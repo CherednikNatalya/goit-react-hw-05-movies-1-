@@ -11,8 +11,7 @@ const TrendingList =({movies}) => {
           <List>
 			{movies.map(({ id, title }) => (
 				<Item key={id}>
-					<Link to={`movies/${id}`} state={{ from: location }}>
-						
+					<Link to={`movies/${id}`} state={{ from: location }}>	
 						<TitleMovie>{title}</TitleMovie>
 					</Link>
 				</Item>

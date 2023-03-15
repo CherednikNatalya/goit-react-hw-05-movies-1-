@@ -14,7 +14,7 @@ const App = () => {
 
   return (
 
-    <BrowserRouter basename="goit-react-hw-05-movies-1-">
+    <BrowserRouter basename="/goit-react-hw-05-movies-1-">
       <Suspense fallback={<Loader/>}>
     <Routes>
       <Route path="/" element={<SharedLayout />}>

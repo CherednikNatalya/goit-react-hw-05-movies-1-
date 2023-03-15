@@ -13,6 +13,7 @@ import { Container, Header,  Link } from "../SharedLayout/SharedLayout.styled";
         
         </nav>
       </Header>
+      
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>

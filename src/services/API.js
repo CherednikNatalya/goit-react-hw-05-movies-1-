@@ -17,13 +17,13 @@ export const fetchTrendingMovies = async () => {
 };
 
 
-export const fetchSearchMovies = async query => {
+export const fetchSearchMovies = async searchName => {
 	const {
 		data: { results },
 	} = await moviesApi.get(`search/movie`, {
 		params: {
 			api_key: API_KEY,
-			query: query,
+			query: searchName,
 		},
 	});
 	return results;

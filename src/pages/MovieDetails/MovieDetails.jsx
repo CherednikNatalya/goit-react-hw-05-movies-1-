@@ -47,7 +47,7 @@ const MovieDetails =() => {
         <Section>
         {status === STATUS.pending && <Loader />}
         {status === STATUS.success && 
-        (<>
+        (<main>
         <Link to={location.state?.from ?? '/'} className="mb-4">
           Go Back
         </Link>
@@ -61,15 +61,16 @@ const MovieDetails =() => {
          <li>
            <NavLink to="reviews" state={{ from: location.state?.from }}>Reviews</NavLink>
          </li>
-         
        </ul>
-       <Outlet />
+       
 
        <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
-       </>)}     
+      
+       </main>)}     
         </Section>
     )
 }
+
 export default MovieDetails

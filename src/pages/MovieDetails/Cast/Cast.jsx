@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams} from 'react-router-dom'
 
-import {fetchCastById} from '../../../services/API'
-import STATUS from '../../../services/status'
+import {fetchCastById} from 'services/API'
+import STATUS from 'services/status'
 import imageReplace from '../../../images/poster-not-found.jpg'
 
 import {  Content, ImgBox,  Item, List,  Value} from './Cast.styled'

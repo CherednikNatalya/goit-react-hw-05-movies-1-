@@ -1,13 +1,12 @@
-import css from '../Button/Button.module.css';
-import PropTypes from 'prop-types';
 
- const Button = ({onClick}) => {
+import PropTypes from 'prop-types';
+import {Btn} from './Button.styled'
+ 
+const Button = ({onClick}) => {
   return (
-  <div className={css.but}>
-    <button type="button" className={css.button} onClick={onClick}>
+  <Btn type="button"  onClick={onClick}>
       Go back
-    </button>
-    </div>
+    </Btn>
   );
 };
 

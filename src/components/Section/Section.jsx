@@ -1,11 +1,13 @@
-import css from './Section.module.css';
-import PropTypes from 'prop-types';
 
- const Section = ({ title, children }) => (
-  <section>
-    <h2 className={css.title}>{title}</h2>
+import PropTypes from 'prop-types';
+import {Title, Sections} from './Section.styled'
+
+
+const Section = ({ title, children }) => (
+  <Sections>
+    <Title>{title}</Title>
     {children}
-  </section>
+  </Sections>
 );
 
 

@@ -9,9 +9,7 @@ const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('pages/MovieDetails/Cast/Cast'));
 const Reviews = lazy(() => import('pages/MovieDetails/Reviews/Reviews'));
 
-
 const App = () => {
-
   return (
 
     <BrowserRouter basename="/goit-react-hw-05-movies-1-">

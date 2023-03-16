@@ -4,8 +4,8 @@ import {fetchMovieDetailsById} from '../../services/API'
 import Section from '../../components/Section/Section'
 import Loader from '../../components/Loader/Loader'
 import MovieCart from '../../components/MovieCart/MovieCart'
-
-import { useParams,  NavLink,Outlet,  Link, useLocation  } from 'react-router-dom'
+import {BtnList, } from './MovieDetails.styled'
+import { useParams, Outlet,  Link, useLocation  } from 'react-router-dom'
 
 const MovieDetails =() => {
     const [movie, setMovie] = useState([])
@@ -48,21 +48,22 @@ const MovieDetails =() => {
         {status === STATUS.pending && <Loader />}
         {status === STATUS.success && 
         (<main>
-        <Link to={location.state?.from ?? '/'} className="mb-4">
+          <BtnList>
+        <Link to={location.state?.from ?? '/'} className="link"  >
           Go Back
         </Link>
-     
+        </BtnList>
         <MovieCart movie={movie}/>
-        
+        <BtnList>
          <ul>
          <li>
-           <NavLink to="cast" state={{ from: location.state?.from }}>Cast</NavLink>
+           <Link to="cast" state={{ from: location.state?.from }} className="link">Cast</Link>
          </li>
          <li>
-           <NavLink to="reviews" state={{ from: location.state?.from }}>Reviews</NavLink>
+           <Link to="reviews" state={{ from: location.state?.from }} className="link">Reviews</Link>
          </li>
        </ul>
-       
+       </BtnList>
 
        <Suspense fallback={<Loader/>}>
         <Outlet />

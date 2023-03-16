@@ -5,7 +5,7 @@ import {fetchReviewsById} from 'services/API'
 import STATUS from 'services/status'
 
 
-import {  List, Name, Text} from './Reviews.styled'
+import { List, Name, Text} from './Reviews.styled'
 import Loader from 'components/Loader/Loader'
 
 
@@ -46,7 +46,7 @@ const Reviews =()=>{
         (<List>
             {reviews.map(({ id, author, content }) => (
                 <li key={id}>
-                    <Name>{author}</Name>
+                    <Name>Author: {author}</Name>
                     <Text>{content}</Text>
                 </li>
             ))}

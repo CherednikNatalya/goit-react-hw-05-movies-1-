@@ -1,5 +1,6 @@
 import {  Content, ImgBox, Inner, Item, List, Name, Value, Overview, Text, Title} from './MovieCart.styled'
 import imageReplace from '../../images/poster-not-found.jpg'
+import PropTypes from 'prop-types'
 
 const MovieCart =({movie}) =>{
     return(
@@ -40,3 +41,18 @@ const MovieCart =({movie}) =>{
 }
 
 export default MovieCart
+
+
+MovieCart.propTypes = {
+    movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+		releaseDate: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+		img: PropTypes.string.isRequired, 
+		voteAverage: PropTypes.number.isRequired,
+		genres: PropTypes.string.isRequired,
+		overview: PropTypes.string.isRequired,
+      })
+    ),
+  }

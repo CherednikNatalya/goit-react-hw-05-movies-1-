@@ -7,7 +7,11 @@ import STATUS from '../../services/status'
 import Loader from '../../components/Loader/Loader'
 
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-import { Btn, Form, Input, Section, List, TitleMovie,Item , Title } from './Movies.styled'
+import { Btn, Form, Input, Section, Title } from './Movies.styled'
+import {List, TitleMovie, Item} from '../../components/TrendingList/TrendingList.styled'
+import {ImageBox} from '../../components/TrendingList/TrendingList.styled'
+import imageReplace from '../../images/poster-not-found.jpg'
+
 
 Notiflix.Notify.init({
 	width: '400px',
@@ -21,7 +25,7 @@ const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState([])
   
-    const searchName = searchParams.get('query');
+    const searchName = searchParams.get('search');
 	const location = useLocation();
 
 	const handleSubmit = e => {
@@ -74,19 +78,26 @@ const Movies = () => {
 				<Input type="text" 
         name="search" 
         placeholder="Enter movie name" 
-        autofocus
+
         autoComplete="off" />
 				<Btn type="submit">Search</Btn>
 			</Form>
-			{/* {status === STATUS.error && <NotFound>NOT FOUND</NotFound>} */}
+			
 			{status === STATUS.pending && <Loader/>}
 			{status === STATUS.success && (
 				<>
 					<Title>Search results</Title>
           <List>
-			{movies.map(({ id, title }) => (
+			{movies && movies.map(({ id, img, title}) => (
 				<Item key={id}>
-					<Link to={`movies/${id}`} state={{ from: location }}>	
+					<Link to={`${id}`} state={{ from: location }}>
+					<ImageBox>
+											{img ? (
+												<img src={`https://image.tmdb.org/t/p/w500` + img} alt={title} width={232} height={350} />
+											) : (
+												<img src={imageReplace} alt="Plug" width={232} height={350} />
+											)}
+										</ImageBox>	
 						<TitleMovie>{title}</TitleMovie>
 					</Link>
 				</Item>

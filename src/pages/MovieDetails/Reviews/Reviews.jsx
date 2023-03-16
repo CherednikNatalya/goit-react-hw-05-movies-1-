@@ -18,7 +18,7 @@ const Reviews =()=>{
         const getReviews = async query => {
             setStatus(STATUS.pending)
             try {
-               const data =await fetchReviewsById(query)
+               const data =await fetchReviewsById(movieId)
               
                onResolve(data) 
             } catch (error) {
